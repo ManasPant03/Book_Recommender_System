@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Book Recommender System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <style>
+        .text-white {
+            color: white
+        }
+
+        .card {
+            width: 300px;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body style="background-color:black">
+    <nav class="navbar" style="background-color:#129cb7">
+        <p class="navbar-brand" style="font-size:50px">Book Recommender</p>
+        <ul class="nav navbar_nav" style="font-size:25px">
+            <li><a href="/" style="margin:20px">Home</a></li>
+            <li><a href="/recommend" style="margin:20px">Recommend</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <h1 class="text-white" style="font-size:50px">Recommend Books</h1>
+            <form action="/recommend_books" method="post">
+                <input name="user_input" type="text" class="form-control"><br>
+                <input type="submit" class="btn btn-lg btn-warning">
+            </form>
+        </div>
+        <div class="row">
+            {% if data %}
+            {% for i in data %}
+            <div class="col-md-3" style="margin-top:30px">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img-top" src="{{ i[2] }}">
+                        <h3>{{i[0]}}</h3>
+                        <p>{{i[1]}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
